@@ -1,0 +1,816 @@
+{
+ "asOf": {
+  "STIP": "2026-10-22",
+  "TIP": "2026-10-22",
+  "DFIP": "2026-10-22",
+  "LTPZ": "2026-10-22"
+ },
+ "sources": {
+  "DFIP": "https://tools-blob.dimensional.com/etf/20261022/DFIP.csv",
+  "LTPZ": "https://fund-ui.pimco.com/fund-detail-api/api/funds/72201R304/topTenHoldings/export?asOfDate=2026-10-22"
+ },
+ "generatedAt": "2026-10-23T18:12:29+00:00",
+ "universe": [
+  {
+   "cusip": "912828V49",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2027-01-15",
+   "coupon": 0.38,
+   "price": 99.82,
+   "realDur": 0.23,
+   "realYtm": 4.16,
+   "source": "STIP"
+  },
+  {
+   "cusip": "912810PS1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2027-01-15",
+   "coupon": 2.38,
+   "price": 100.26,
+   "realDur": 0.23,
+   "realYtm": 4.23,
+   "source": "STIP"
+  },
+  {
+   "cusip": "91282CEJ6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2027-04-15",
+   "coupon": 0.13,
+   "price": 99.2,
+   "realDur": 0.47,
+   "realYtm": 3.25,
+   "source": "STIP"
+  },
+  {
+   "cusip": "9128282L3",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2027-07-15",
+   "coupon": 0.38,
+   "price": 99.27,
+   "realDur": 0.72,
+   "realYtm": 2.33,
+   "source": "STIP"
+  },
+  {
+   "cusip": "91282CFR7",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2027-10-15",
+   "coupon": 1.63,
+   "price": 99.82,
+   "realDur": 0.96,
+   "realYtm": 2.52,
+   "source": "TIP"
+  },
+  {
+   "cusip": "9128283R9",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2028-01-15",
+   "coupon": 0.5,
+   "price": 97.87,
+   "realDur": 1.21,
+   "realYtm": 2.83,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810PV4",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2028-01-15",
+   "coupon": 1.75,
+   "price": 99.34,
+   "realDur": 1.2,
+   "realYtm": 2.86,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CGW5",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2028-04-15",
+   "coupon": 1.25,
+   "price": 98.39,
+   "realDur": 1.45,
+   "realYtm": 2.83,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810FD5",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2028-04-15",
+   "coupon": 3.63,
+   "price": 101.82,
+   "realDur": 1.43,
+   "realYtm": 2.84,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912828Y38",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2028-07-15",
+   "coupon": 0.75,
+   "price": 97.84,
+   "realDur": 1.7,
+   "realYtm": 2.43,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CJH5",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2028-10-15",
+   "coupon": 2.38,
+   "price": 100.49,
+   "realDur": 1.92,
+   "realYtm": 2.48,
+   "source": "TIP"
+  },
+  {
+   "cusip": "9128285W6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2029-01-15",
+   "coupon": 0.88,
+   "price": 96.92,
+   "realDur": 2.18,
+   "realYtm": 2.61,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810PZ5",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2029-01-15",
+   "coupon": 2.5,
+   "price": 100.41,
+   "realDur": 2.14,
+   "realYtm": 2.63,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CKL4",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2029-04-15",
+   "coupon": 2.13,
+   "price": 99.46,
+   "realDur": 2.4,
+   "realYtm": 2.64,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810FH6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2029-04-15",
+   "coupon": 3.88,
+   "price": 103.62,
+   "realDur": 2.36,
+   "realYtm": 2.66,
+   "source": "TIP"
+  },
+  {
+   "cusip": "9128287D6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2029-07-15",
+   "coupon": 0.25,
+   "price": 94.96,
+   "realDur": 2.69,
+   "realYtm": 2.42,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CLV1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2029-10-15",
+   "coupon": 1.63,
+   "price": 98.3,
+   "realDur": 2.88,
+   "realYtm": 2.46,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912828Z37",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2030-01-15",
+   "coupon": 0.13,
+   "price": 93.21,
+   "realDur": 3.18,
+   "realYtm": 2.53,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CNB3",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2030-04-15",
+   "coupon": 1.63,
+   "price": 97.5,
+   "realDur": 3.35,
+   "realYtm": 2.58,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912828ZZ6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2030-07-15",
+   "coupon": 0.13,
+   "price": 92.47,
+   "realDur": 3.68,
+   "realYtm": 2.43,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CPH8",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2030-10-15",
+   "coupon": 1.13,
+   "price": 95.64,
+   "realDur": 3.85,
+   "realYtm": 2.45,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CBF7",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2031-01-15",
+   "coupon": 0.13,
+   "price": 91.09,
+   "realDur": 4.17,
+   "realYtm": 2.51,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CQP9",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2031-04-15",
+   "coupon": 1.25,
+   "price": 95.12,
+   "realDur": 4.31,
+   "realYtm": 2.56,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CCM1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2031-07-15",
+   "coupon": 0.13,
+   "price": 90.31,
+   "realDur": 4.66,
+   "realYtm": 2.45,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CDX6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2032-01-15",
+   "coupon": 0.13,
+   "price": 88.87,
+   "realDur": 5.15,
+   "realYtm": 2.53,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810FQ6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2032-04-15",
+   "coupon": 3.38,
+   "price": 104.79,
+   "realDur": 4.99,
+   "realYtm": 2.57,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CEZ0",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2032-07-15",
+   "coupon": 0.63,
+   "price": 90.73,
+   "realDur": 5.55,
+   "realYtm": 2.49,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CGK1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2033-01-15",
+   "coupon": 1.13,
+   "price": 92.33,
+   "realDur": 5.93,
+   "realYtm": 2.58,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CHP9",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2033-07-15",
+   "coupon": 1.38,
+   "price": 93.46,
+   "realDur": 6.33,
+   "realYtm": 2.54,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CJY8",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2034-01-15",
+   "coupon": 1.75,
+   "price": 94.94,
+   "realDur": 6.69,
+   "realYtm": 2.62,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CLE9",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2034-07-15",
+   "coupon": 1.88,
+   "price": 95.59,
+   "realDur": 7.09,
+   "realYtm": 2.6,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CML2",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2035-01-15",
+   "coupon": 2.13,
+   "price": 96.64,
+   "realDur": 7.43,
+   "realYtm": 2.67,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CNS6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2035-07-15",
+   "coupon": 1.88,
+   "price": 94.5,
+   "realDur": 7.92,
+   "realYtm": 2.67,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CPU9",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2036-01-15",
+   "coupon": 1.88,
+   "price": 93.74,
+   "realDur": 8.33,
+   "realYtm": 2.73,
+   "source": "TIP"
+  },
+  {
+   "cusip": "91282CRE3",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2036-07-15",
+   "coupon": 2.38,
+   "price": 97.76,
+   "realDur": 8.55,
+   "realYtm": 2.72,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810QF8",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2040-02-15",
+   "coupon": 2.13,
+   "price": 92.08,
+   "realDur": 11.36,
+   "realYtm": 2.9,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810QP6",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2041-02-15",
+   "coupon": 2.13,
+   "price": 91.09,
+   "realDur": 12.07,
+   "realYtm": 2.95,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810QV3",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2042-02-15",
+   "coupon": 0.75,
+   "price": 72.93,
+   "realDur": 14.07,
+   "realYtm": 3.01,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810RA8",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2043-02-15",
+   "coupon": 0.63,
+   "price": 69.64,
+   "realDur": 15.07,
+   "realYtm": 3.04,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810RF7",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2044-02-15",
+   "coupon": 1.38,
+   "price": 77.92,
+   "realDur": 14.86,
+   "realYtm": 3.07,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810RL4",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2045-02-15",
+   "coupon": 0.75,
+   "price": 67.87,
+   "realDur": 16.52,
+   "realYtm": 3.09,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810RR1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2046-02-15",
+   "coupon": 1.0,
+   "price": 70.07,
+   "realDur": 16.86,
+   "realYtm": 3.11,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810RW0",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2047-02-15",
+   "coupon": 0.88,
+   "price": 66.95,
+   "realDur": 17.83,
+   "realYtm": 3.11,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810SB5",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2048-02-15",
+   "coupon": 1.0,
+   "price": 67.64,
+   "realDur": 18.31,
+   "realYtm": 3.12,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810SG4",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2049-02-15",
+   "coupon": 1.0,
+   "price": 66.61,
+   "realDur": 19.02,
+   "realYtm": 3.12,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810SM1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2050-02-15",
+   "coupon": 0.25,
+   "price": 53.07,
+   "realDur": 21.95,
+   "realYtm": 3.12,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810SV1",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2051-02-15",
+   "coupon": 0.13,
+   "price": 49.68,
+   "realDur": 23.36,
+   "realYtm": 3.11,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810TE8",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2052-02-15",
+   "coupon": 0.13,
+   "price": 48.3,
+   "realDur": 24.29,
+   "realYtm": 3.11,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810TP3",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2053-02-15",
+   "coupon": 1.5,
+   "price": 71.51,
+   "realDur": 20.38,
+   "realYtm": 3.12,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810TY4",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2054-02-15",
+   "coupon": 2.13,
+   "price": 82.21,
+   "realDur": 19.63,
+   "realYtm": 3.13,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810UH9",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2055-02-15",
+   "coupon": 2.38,
+   "price": 86.63,
+   "realDur": 19.67,
+   "realYtm": 3.12,
+   "source": "TIP"
+  },
+  {
+   "cusip": "912810US5",
+   "name": "TREASURY (CPI) NOTE",
+   "maturity": "2056-02-15",
+   "coupon": 2.38,
+   "price": 86.65,
+   "realDur": 20.13,
+   "realYtm": 3.1,
+   "source": "TIP"
+  }
+ ],
+ "funds": {
+  "STIP": {
+   "name": "iShares 0-5 Year TIPS Bond ETF",
+   "expense": 0.0003,
+   "holdings": [
+    {
+     "cusip": "91282CPH8",
+     "weight": 0.056280244056385445
+    },
+    {
+     "cusip": "91282CQP9",
+     "weight": 0.05554386703134863
+    },
+    {
+     "cusip": "91282CNB3",
+     "weight": 0.05543867031348622
+    },
+    {
+     "cusip": "91282CLV1",
+     "weight": 0.053965916263412586
+    },
+    {
+     "cusip": "91282CKL4",
+     "weight": 0.05207237534188934
+    },
+    {
+     "cusip": "91282CJH5",
+     "weight": 0.05144119503471492
+    },
+    {
+     "cusip": "91282CFR7",
+     "weight": 0.04975804754891648
+    },
+    {
+     "cusip": "91282CEJ6",
+     "weight": 0.049547654113191675
+    },
+    {
+     "cusip": "91282CGW5",
+     "weight": 0.049232063959604465
+    },
+    {
+     "cusip": "91282CBF7",
+     "weight": 0.04796970334525563
+    },
+    {
+     "cusip": "912828ZZ6",
+     "weight": 0.046391752577319596
+    },
+    {
+     "cusip": "91282CCM1",
+     "weight": 0.04586576898800759
+    },
+    {
+     "cusip": "9128283R9",
+     "weight": 0.04533978539869556
+    },
+    {
+     "cusip": "9128282L3",
+     "weight": 0.04491899852724595
+    },
+    {
+     "cusip": "912828Z37",
+     "weight": 0.04323585104144752
+    },
+    {
+     "cusip": "912828V49",
+     "weight": 0.04029034294130024
+    },
+    {
+     "cusip": "912828Y38",
+     "weight": 0.039343572480538616
+    },
+    {
+     "cusip": "9128287D6",
+     "weight": 0.038922785609089
+    },
+    {
+     "cusip": "9128285W6",
+     "weight": 0.03376814643383127
+    },
+    {
+     "cusip": "912810FH6",
+     "weight": 0.023248474647590996
+    },
+    {
+     "cusip": "912810PS1",
+     "weight": 0.020513359983168528
+    },
+    {
+     "cusip": "912810FD5",
+     "weight": 0.019987376393856515
+    },
+    {
+     "cusip": "912810PV4",
+     "weight": 0.01904060593309489
+    },
+    {
+     "cusip": "912810PZ5",
+     "weight": 0.01788344203660846
+    }
+   ]
+  },
+  "DFIP": {
+   "name": "Dimensional Inflation-Protected Securities ETF",
+   "expense": 0.0011,
+   "holdings": [
+    {
+     "cusip": "91282CBF7",
+     "weight": 0.10721135359734853
+    },
+    {
+     "cusip": "91282CDX6",
+     "weight": 0.10054791709094668
+    },
+    {
+     "cusip": "912810RL4",
+     "weight": 0.021032284303017564
+    },
+    {
+     "cusip": "912810QP6",
+     "weight": 0.04928224824622289
+    },
+    {
+     "cusip": "912810RA8",
+     "weight": 0.02442570643725434
+    },
+    {
+     "cusip": "912810QV3",
+     "weight": 0.025909016151108216
+    },
+    {
+     "cusip": "912810RR1",
+     "weight": 0.009105557819800379
+    },
+    {
+     "cusip": "912810FQ6",
+     "weight": 0.10502408624867803
+    },
+    {
+     "cusip": "912828Z37",
+     "weight": 0.1031807564172831
+    },
+    {
+     "cusip": "91282CEZ0",
+     "weight": 0.0019840140801532374
+    },
+    {
+     "cusip": "912810RF7",
+     "weight": 0.027398787039008318
+    },
+    {
+     "cusip": "912810FH6",
+     "weight": 0.01757104492505084
+    },
+    {
+     "cusip": "91282CCM1",
+     "weight": 0.1069518776998539
+    },
+    {
+     "cusip": "91282CJY8",
+     "weight": 0.030458114521581262
+    },
+    {
+     "cusip": "91282CPU9",
+     "weight": 0.0026895538979243216
+    },
+    {
+     "cusip": "91282CLE9",
+     "weight": 0.01164145415068301
+    },
+    {
+     "cusip": "91282CNS6",
+     "weight": 0.002264993980131486
+    },
+    {
+     "cusip": "912828ZZ6",
+     "weight": 0.10759155118805358
+    },
+    {
+     "cusip": "9128287D6",
+     "weight": 0.059703299335937716
+    },
+    {
+     "cusip": "91282CGK1",
+     "weight": 0.022872423982403058
+    },
+    {
+     "cusip": "91282CML2",
+     "weight": 0.01574931632077538
+    },
+    {
+     "cusip": "912810QF8",
+     "weight": 0.0474046425667842
+    }
+   ]
+  },
+  "LTPZ": {
+   "name": "PIMCO 15+ Year US TIPS Index ETF",
+   "expense": 0.002,
+   "holdings": [
+    {
+     "cusip": "912810RF7",
+     "weight": 0.10227614559310137
+    },
+    {
+     "cusip": "912810RA8",
+     "weight": 0.08954176275945053
+    },
+    {
+     "cusip": "912810SB5",
+     "weight": 0.08934122129750327
+    },
+    {
+     "cusip": "912810TY4",
+     "weight": 0.08583174571342626
+    },
+    {
+     "cusip": "912810RL4",
+     "weight": 0.08362578963200643
+    },
+    {
+     "cusip": "912810RR1",
+     "weight": 0.08001604331695579
+    },
+    {
+     "cusip": "912810RW0",
+     "weight": 0.07821117015943047
+    },
+    {
+     "cusip": "912810TP3",
+     "weight": 0.0664794946355159
+    },
+    {
+     "cusip": "912810UH9",
+     "weight": 0.06026270931515091
+    },
+    {
+     "cusip": "912810QV3",
+     "weight": 0.059159731274441
+    },
+    {
+     "cusip": "912810SG4",
+     "weight": 0.0525418630301815
+    },
+    {
+     "cusip": "912810SM1",
+     "weight": 0.04081018750626693
+    },
+    {
+     "cusip": "912810TE8",
+     "weight": 0.040409104582372415
+    },
+    {
+     "cusip": "912810SV1",
+     "weight": 0.03820314850095258
+    },
+    {
+     "cusip": "912810US5",
+     "weight": 0.033289882683244766
+    }
+   ]
+  }
+ },
+ "checks": {
+  "STIP": {
+   "nHoldings": 24,
+   "bondWeightBeforeNormalize": 0.9506,
+   "missingFromUniverse": []
+  },
+  "DFIP": {
+   "nHoldings": 22,
+   "bondWeightBeforeNormalize": 0.99666,
+   "missingFromUniverse": []
+  },
+  "LTPZ": {
+   "nHoldings": 15,
+   "bondWeightBeforeNormalize": 0.9973,
+   "missingFromUniverse": []
+  }
+ }
+}

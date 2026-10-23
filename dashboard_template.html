@@ -1,0 +1,225 @@
+<title>TIPS ETF Allocator</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one working column — controls strip, summary figures, fund table, ladder, buckets, look-through bonds */
+:root {
+  --bg: #f6f8f7; --surface: #ffffff; --ink: #15211c; --muted: #5d6b64; --rule: #d8e0dc;
+  --accent: #2d6a4f; --warn: #a2481b; --warn-bg: #fbeee6;
+  --stip: #9cc9b2; --dfip: #2d6a4f; --ltpz: #1e3a5c;
+  --display: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111815; --surface: #18211d; --ink: #e5ece8; --muted: #9aa8a1; --rule: #2c3833;
+  --accent: #7cc4a0; --warn: #f0a37a; --warn-bg: #3a2418;
+  --stip: #b8e0cb; --dfip: #5fae88; --ltpz: #7fa3cf; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111815; --surface: #18211d; --ink: #e5ece8; --muted: #9aa8a1; --rule: #2c3833;
+  --accent: #7cc4a0; --warn: #f0a37a; --warn-bg: #3a2418;
+  --stip: #b8e0cb; --dfip: #5fae88; --ltpz: #7fa3cf; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+h1 { font: 700 1.75rem/1.15 var(--display); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font: 600 0.78rem/1 var(--body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 12px; }
+.sub { color: var(--muted); margin: 4px 0 0; }
+.num, td.n, th.n { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+section { min-width: 0; }
+
+/* controls */
+.controls { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 18px;
+  display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); align-items: end; }
+label { display: grid; gap: 6px; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+label .tk { display: flex; align-items: center; gap: 6px; color: var(--ink); }
+.sw { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+input { font: 500 1rem var(--mono); color: var(--ink); background: var(--bg); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 8px 10px; width: 100%; box-sizing: border-box; }
+input:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.sum { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; font-size: 0.85rem; color: var(--muted); }
+.pill { font: 600 0.75rem var(--body); padding: 3px 9px; border-radius: 999px; background: var(--bg); border: 1px solid var(--rule); color: var(--accent); }
+.pill.bad { color: var(--warn); background: var(--warn-bg); border-color: transparent; }
+.solve { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-left: auto; }
+.solve input { width: 5.5em; padding: 5px 8px; font-size: 0.9rem; }
+button { font: 600 0.82rem var(--body); color: var(--surface); background: var(--accent); border: 0; border-radius: 4px; padding: 7px 12px; cursor: pointer; }
+button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--rule); }
+
+/* summary figures */
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-top: 2px solid var(--ink); }
+.fig { padding: 14px 16px 4px 0; display: grid; gap: 2px; }
+.fig .v { font: 500 1.65rem/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.fig .k { font-size: 0.8rem; color: var(--muted); }
+.fig.lead .v { color: var(--accent); }
+
+/* tables */
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+th { text-align: left; font-weight: 600; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 8px 10px; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+td { padding: 8px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th.n, td.n { text-align: right; }
+tr.total td { font-weight: 600; border-top: 1px solid var(--ink); border-bottom: 0; }
+.fname { color: var(--muted); font-size: 0.8rem; }
+
+.two { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 28px; }
+@media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart text { fill: var(--muted); font: 11px var(--mono); }
+.legend { display: flex; gap: 16px; font-size: 0.8rem; color: var(--muted); margin-top: 6px; flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.bar { height: 8px; background: var(--rule); border-radius: 2px; overflow: hidden; min-width: 60px; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+
+details summary { cursor: pointer; font: 600 0.78rem var(--body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+details[open] summary { margin-bottom: 12px; }
+.notes { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; display: grid; gap: 6px; max-width: 75ch; }
+.notes p { margin: 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>TIPS ETF Allocator</h1>
+    <p class="sub" id="asof"></p>
+  </header>
+
+  <form class="controls" id="form" autocomplete="off">
+    <label for="size">Portfolio size ($)<input id="size" inputmode="decimal" value="500,000"></label>
+    <label for="w-STIP"><span class="tk"><span class="sw" style="background:var(--stip)"></span>STIP %</span><input id="w-STIP" inputmode="decimal" value="25"></label>
+    <label for="w-DFIP"><span class="tk"><span class="sw" style="background:var(--dfip)"></span>DFIP %</span><input id="w-DFIP" inputmode="decimal" value="60"></label>
+    <label for="w-LTPZ"><span class="tk"><span class="sw" style="background:var(--ltpz)"></span>LTPZ %</span><input id="w-LTPZ" inputmode="decimal" value="15"></label>
+    <label for="today">Analysis date<input id="today" type="date"></label>
+    <div class="sum">
+      <span>Allocation total <span class="pill" id="total"></span></span>
+      <div class="solve">
+        <span>Target avg maturity</span>
+        <input id="wam" inputmode="decimal" value="8.0" aria-label="Target average maturity in years"> <span>yrs</span>
+        <button type="button" id="solve">Solve DFIP / LTPZ</button>
+      </div>
+    </div>
+  </form>
+
+  <section>
+    <h2>Blended portfolio</h2>
+    <div class="figs" id="figs"></div>
+  </section>
+
+  <section>
+    <h2>By fund</h2>
+    <div class="tbl"><table id="funds"></table></div>
+  </section>
+
+  <div class="two">
+    <section class="chart">
+      <h2>Maturity ladder · % of portfolio maturing each year</h2>
+      <div id="ladder"></div>
+      <div class="legend" id="legend"></div>
+    </section>
+    <section>
+      <h2>Maturity buckets</h2>
+      <div class="tbl"><table id="buckets"></table></div>
+    </section>
+  </div>
+
+  <section>
+    <details id="lt">
+      <summary>Look-through holdings (<span id="nbonds"></span> TIPS)</summary>
+      <div class="tbl"><table id="bonds"></table></div>
+    </details>
+  </section>
+
+  <footer class="notes">
+    <p>Holdings come from each sponsor's daily file (iShares, Dimensional, PIMCO). Cash and non-TIPS lines are excluded and each fund's bonds are rescaled to 100%.</p>
+    <p>Real yield, real duration, coupon and price for every bond come from the iShares TIP and STIP files. Years to maturity use 30/360 from the analysis date, as in the original sheet. Expense ratios are prospectus net.</p>
+    <p>Maturity buckets group by calendar year offset from the analysis date, matching the sheet. Real yields are before inflation; net yield subtracts the blended expense ratio.</p>
+  </footer>
+</div>
+
+<script>/*ENGINE*/</script>
+<script>
+const DATA = /*DATA*/null;
+const TK = ['STIP', 'DFIP', 'LTPZ'];
+const $ = id => document.getElementById(id);
+const pct = (x, d = 2) => (x * 100).toFixed(d) + '%';
+const usd = x => '$' + Math.round(x).toLocaleString('en-US');
+const yrs = x => x.toFixed(2);
+const parseNum = s => Number(String(s).replace(/[,$%\s]/g, ''));
+const color = tk => `var(--${tk.toLowerCase()})`;
+const fmtDate = s => new Date(s + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+function localToday() { const d = new Date(); return new Date(d - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
+$('today').value = localToday();
+const dates = [...new Set(Object.values(DATA.asOf))];
+$('asof').textContent = 'Holdings as of ' + dates.map(fmtDate).join(' / ') + ' · STIP, DFIP and LTPZ look-through';
+
+function read() {
+  const w = Object.fromEntries(TK.map(t => [t, (parseNum($('w-' + t).value) || 0) / 100]));
+  return { w, size: parseNum($('size').value) || 0, today: $('today').value || localToday() };
+}
+
+function render() {
+  const { w, size, today } = read();
+  const tot = TK.reduce((s, t) => s + w[t], 0);
+  const ok = Math.abs(tot - 1) < 1e-6;
+  $('total').textContent = pct(tot, 1) + (ok ? '' : ' · must equal 100%');
+  $('total').className = 'pill' + (ok ? '' : ' bad');
+  const r = analyze(DATA, w, size, today);
+  const b = r.blended;
+
+  $('figs').innerHTML = [
+    ['lead', pct(b.realYtmNet), 'Real yield, net of fees'],
+    ['', pct(b.realYtm), 'Real yield to maturity'],
+    ['', yrs(b.avgDur), 'Real duration (yrs)'],
+    ['', yrs(b.avgMat), 'Avg maturity (yrs)'],
+    ['', pct(b.avgCoupon), 'Avg real coupon'],
+    ['', pct(b.fees, 3), 'Blended expense ratio'],
+  ].map(([c, v, k]) => `<div class="fig ${c}"><span class="v">${v}</span><span class="k">${k}</span></div>`).join('');
+
+  $('funds').innerHTML = `<thead><tr><th>Fund</th><th class="n">Weight</th><th class="n">Amount</th><th class="n">Avg maturity</th><th class="n">Real duration</th><th class="n">Real YTM</th><th class="n">Expense</th><th class="n">Holdings</th></tr></thead><tbody>` +
+    TK.map(t => { const f = r.fund[t]; return `<tr><td><span class="tk" style="display:flex;gap:8px;align-items:center"><span class="sw" style="background:${color(t)}"></span><b>${t}</b> <span class="fname">${DATA.funds[t].name}</span></span></td>
+      <td class="n">${pct(f.weight, 1)}</td><td class="n">${usd(f.value)}</td><td class="n">${yrs(f.avgMat)}</td><td class="n">${yrs(f.avgDur)}</td><td class="n">${pct(f.ytm)}</td><td class="n">${pct(f.expense)}</td><td class="n">${DATA.funds[t].holdings.length}</td></tr>`; }).join('') +
+    `<tr class="total"><td>Blended</td><td class="n">${pct(tot, 1)}</td><td class="n">${usd(size * tot)}</td><td class="n">${yrs(b.avgMat)}</td><td class="n">${yrs(b.avgDur)}</td><td class="n">${pct(b.realYtm)}</td><td class="n">${pct(b.fees, 3)}</td><td class="n">${r.bonds.length}</td></tr></tbody>`;
+
+  // ladder: stacked bars by fund
+  const W = 680, H = 250, L = 40, B = 24, T = 10, R = 8;
+  const max = Math.max(0.01, ...r.ladder.map(x => x.total));
+  const step = max > 0.2 ? 0.1 : max > 0.1 ? 0.05 : max > 0.04 ? 0.02 : 0.01;
+  const top = Math.ceil(max / step) * step;
+  const y = v => T + (H - T - B) * (1 - v / top);
+  const bw = (W - L - R) / r.ladder.length;
+  let s = '';
+  for (let v = 0; v <= top + 1e-9; v += step)
+    s += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)" stroke-width="1"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)}%</text>`;
+  r.ladder.forEach((x, i) => {
+    let acc = 0; const bx = L + i * bw + bw * 0.12;
+    for (const t of TK) { const v = x.byFund[t]; if (v > 0) { s += `<rect x="${bx}" y="${y(acc + v)}" width="${bw * 0.76}" height="${y(acc) - y(acc + v)}" fill="${color(t)}"><title>${x.year} ${t}: ${pct(v)}</title></rect>`; acc += v; } }
+    if (i % 5 === 0) s += `<text x="${bx + bw * 0.38}" y="${H - 6}" text-anchor="middle">${x.year}</text>`;
+  });
+  $('ladder').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Maturity ladder by year">${s}</svg>`;
+  $('legend').innerHTML = TK.map(t => `<span><span class="sw" style="background:${color(t)}"></span>${t}</span>`).join('');
+
+  $('buckets').innerHTML = `<thead><tr><th>Years</th><th class="n">Weight</th><th class="n">Amount</th><th></th></tr></thead><tbody>` +
+    r.buckets.map(k => `<tr><td>${k.label}</td><td class="n">${pct(k.w, 1)}</td><td class="n">${usd(k.w * size)}</td><td style="width:35%"><div class="bar"><i style="width:${Math.min(100, k.w * 100)}%"></i></div></td></tr>`).join('') + '</tbody>';
+
+  $('nbonds').textContent = r.bonds.length;
+  $('bonds').innerHTML = `<thead><tr><th>Maturity</th><th>CUSIP</th><th class="n">Coupon</th><th class="n">Real YTM</th><th class="n">Real dur</th>${TK.map(t => `<th class="n">${t}</th>`).join('')}<th class="n">Total</th><th class="n">Amount</th></tr></thead><tbody>` +
+    r.bonds.map(x => `<tr><td class="n" style="text-align:left">${x.maturity}</td><td class="n" style="text-align:left">${x.cusip}</td><td class="n">${x.coupon.toFixed(3)}%</td><td class="n">${x.realYtm.toFixed(2)}%</td><td class="n">${x.realDur.toFixed(2)}</td>${TK.map(t => `<td class="n">${x.byFund[t] ? pct(x.byFund[t]) : ''}</td>`).join('')}<td class="n"><b>${pct(x.w)}</b></td><td class="n">${usd(x.w * size)}</td></tr>`).join('') + '</tbody>';
+}
+
+$('form').addEventListener('input', render);
+$('form').addEventListener('submit', e => e.preventDefault());
+$('size').addEventListener('blur', () => { const v = parseNum($('size').value); if (v) $('size').value = Math.round(v).toLocaleString('en-US'); });
+$('solve').addEventListener('click', () => {
+  const { w, size, today } = read();
+  const target = parseNum($('wam').value);
+  const d = solveDfipForWam(DATA, w.STIP, target, size, today);
+  if (d == null) return;
+  const round = x => Math.round(x * 1000) / 10;
+  $('w-DFIP').value = round(d); $('w-LTPZ').value = round(1 - w.STIP - d);
+  render();
+});
+render();
+</script>
